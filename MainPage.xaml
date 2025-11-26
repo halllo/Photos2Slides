@@ -9,31 +9,46 @@
             Padding="30,0" 
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-                
-            <Label 
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-            
-            <Label 
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
+            <Button 
+                x:Name="LoadPhotosBtn"
+                Text="Load Photos"
+                SemanticProperties.Hint="Loads photos from your library"
+                Clicked="OnLoadPhotosClicked"
                 HorizontalOptions="Center" />
 
-            <Button 
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+            <CollectionView x:Name="PhotosCollectionView"
+                            Margin="0,20,0,0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" ColumnDefinitions="*,Auto,*">
+                            <Image Grid.Column="0"
+                                   Source="{Binding ImageSource}"
+                                   HeightRequest="300"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center" />
+                            <VerticalStackLayout Grid.Column="1" 
+                                                 Spacing="10"
+                                                 Margin="10,0"
+                                                 VerticalOptions="Center">
+                                <Button Text="→"
+                                        FontSize="24"
+                                        Clicked="OnShowDuplicateClicked"
+                                        BindingContext="{Binding}" />
+                                <Button Text="Export"
+                                        FontSize="14"
+                                        Clicked="OnExportImageClicked"
+                                        BindingContext="{Binding}" />
+                            </VerticalStackLayout>
+                            <Image Grid.Column="2"
+                                   Source="{Binding ImageSource}"
+                                   HeightRequest="300"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   IsVisible="{Binding ShowDuplicate}" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>
