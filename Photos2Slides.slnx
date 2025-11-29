@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Photos2Slides/Photos2Slides.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="Aspose.Slides.Test/Aspose.Slides.Test.csproj">
+  </Project>
+</Solution>

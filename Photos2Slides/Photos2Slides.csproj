@@ -46,7 +46,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Aspose.Drawing" Version="25.8.0" />
+		<PackageReference Include="Aspose.Slides.NET" Version="25.8.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="Aspose.Total.lic">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 </Project>
