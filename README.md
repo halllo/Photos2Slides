@@ -2,18 +2,19 @@
 
 This experimental application explores dotent MAUI on maccatalyst capabilities.
 
-- 🚧 Accessing Photo Library
+- ✅ Accessing Photo Library
 - 🚧 Detect Slide & Deskew
 - 🚧 Create a Slide Deck
 
 ## Problems
 
-## ❌ Aspose.Slides.NET cannot use GDIP on macos
+### ❌ PPTX creation on macos
 
-On macos we get this error:
+#### ❌ Aspose.Slides.NET
+
+We get this error:
 
 ```log
-Hello, World!
 Unhandled exception. System.TypeInitializationException: The type initializer for 'Gdip' threw an exception.
  ---> System.PlatformNotSupportedException: System.Drawing.Common is not supported on non-Windows platforms. See https://aka.ms/systemdrawingnonwindows for more information.
    at System.Drawing.LibraryResolver.EnsureRegistered()
@@ -38,4 +39,31 @@ Associated Aspose Tickets:
 
 - [Aspose.Slides.Presentation Throws “The Type Initializer for ‘Gdip’ Threw Exception”](https://forum.aspose.com/t/aspose-slides-presentation-throws-the-type-initializer-for-gdip-threw-exception/258583/9)
 
-To circumvent this, we can export only images and run the slides generation in an ubunto container with all relevant libgdip packages installed.
+To circumvent this, we export only images and run the slides generation in an ubunto container with all relevant libgdip packages installed.
+
+For that we use this [devcontainer](.devcontainer/devcontainer.json) and install libgdiplus:
+
+```bash
+sudo apt update && sudo apt install -y libgdiplus
+```
+
+To verify it was successfully installed:
+
+```bash
+dpkg -l | grep libgdiplus
+```
+
+Unfortunately, when we run the Aspose.Slides app, we still get the same error inside the devcontainer:
+
+```log
+Unhandled exception. System.TypeInitializationException: The type initializer for 'Gdip' threw an exception.
+ ---> System.PlatformNotSupportedException: System.Drawing.Common is not supported on non-Windows platforms. See https://aka.ms/systemdrawingnonwindows for more information.
+```
+
+It seems we really have to use Aspose.Slides on Windows.
+
+Or use a different pptx creator.
+
+#### ✅ IronPPT
+
+[Details](https://www.nuget.org/packages/IronPPT).

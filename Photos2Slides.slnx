@@ -2,6 +2,8 @@
   <Project Path="Photos2Slides/Photos2Slides.csproj">
     <Deploy />
   </Project>
-  <Project Path="Aspose.Slides.Test/Aspose.Slides.Test.csproj">
+  <Project Path="Photos2Slides.AsposeSlidesGenerator/Photos2Slides.AsposeSlidesGenerator.csproj">
+  </Project>
+  <Project Path="Photos2Slides.IronPptGenerator/Photos2Slides.IronPptGenerator.csproj">
   </Project>
 </Solution>

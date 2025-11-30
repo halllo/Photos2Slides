@@ -1,6 +1,5 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿
 Console.WriteLine("Hello, World!");
-
 
 var asposeLicenseFilename = Path.Combine(AppContext.BaseDirectory, "Aspose.Total.lic");
 new Aspose.Slides.License().SetLicense(asposeLicenseFilename);
