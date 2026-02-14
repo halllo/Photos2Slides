@@ -153,7 +153,7 @@ public partial class MainPage : ContentPage
 	{
 		var timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
 		var fileName = $"{timestamp}{postfix}";
-		var documentsPath = "/Users/manuelnaujoks/Projects/Photos2Slides";
+		var documentsPath = "/Users/Manuel.Naujoks/Projects/Photos2Slides";
 		var outputDirectory = Path.Combine(documentsPath, "exported");
 		Directory.CreateDirectory(outputDirectory); // Creates directory if it doesn't exist
 		var filePath = Path.Combine(outputDirectory, fileName);
