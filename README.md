@@ -67,3 +67,33 @@ Or use a different pptx creator.
 #### ✅ IronPPT
 
 [Details](https://www.nuget.org/packages/IronPPT).
+
+## Alternatives
+
+Two scripts are available to export the latest photo from the macOS Photo Library:
+
+### AppleScript (Recommended)
+
+```bash
+osascript export_latest_photo_applescript.scpt
+```
+
+- **Pros**: Simple, macOS handles permissions automatically
+- **Cons**: Slower for large photo libraries (iterates through all photos)
+- Exports to `./exported/` folder
+
+### Python with PyObjC
+
+```bash
+uv run export_latest_photo.py
+```
+
+- **Pros**: Direct API access, potentially faster
+- **Cons**: Requires manual permission setup (Terminal needs Full Disk Access)
+- Uses PEP 723 inline dependencies (managed by `uv`)
+
+**Permission setup for Python:**
+
+1. Open System Settings → Privacy & Security → Full Disk Access
+2. Enable your Terminal app
+3. Restart Terminal
